@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_plugin_manifest_file>
+    <SdkVersion major="1" minor="33"  release="0" />
+    <Plugin name="ImplementationGenerator">
+        <Value title="ImplementationGenerator" />
+        <Value version="0.1" />
+        <Value description="The implementation generator plug-in which creates .cpp files based on the header files." />
+        <Value author="Vincent Cote, Jace Reihl, Nathan Tipper" />
+        <Value authorEmail="vincent.cote@uleth.ca, jace.riehl@uleth.ca, n.tipper@uleth.ca" />
+        <Value authorWebsite="" />
+        <Value thanksTo="Nobody. I hate you all." />
+        <Value license="GPL" />
+    </Plugin>
+</CodeBlocks_plugin_manifest_file>
