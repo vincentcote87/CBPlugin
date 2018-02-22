@@ -1,0 +1,8 @@
+*~
+*.so
+*.layout
+*.cbplugin
+*.depend
+*.zip
+.objs/
+DS_store
