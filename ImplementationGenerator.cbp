@@ -90,6 +90,7 @@
 		<Linker>
 			<Add option="-Wl,--no-undefined" />
 		</Linker>
+		<Unit filename="HelloWorld.h" />
 		<Unit filename="ImplementationGenerator.cpp" />
 		<Unit filename="ImplementationGenerator.h" />
 		<Unit filename="manifest.xml" />
