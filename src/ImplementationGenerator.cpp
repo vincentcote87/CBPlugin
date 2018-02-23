@@ -77,7 +77,7 @@ int ImplementationGenerator::Execute()
         return -1;
     }
 
-    wxString srcPath = _(""); // Additional path interface. Trying to be extensible to something like src/whatever.cpp
+    wxString srcPath = _("src/"); // Additional path interface. Trying to be extensible to something like src/whatever.cpp
     if(srcPath == _(""))
         srcPath = implementationFile; // It will be this everytime until we add a way to read in the actual file path
     else
@@ -96,6 +96,7 @@ int ImplementationGenerator::Execute()
     }
 
     instance->GetLogManager()->Log(_("Opened File!"));
+    // TODO: May not need as people will usually link their include folders
     wxString includeDirectory(_("")); // Once again, open for extensibility of something like include/whatever.h
     if(includeDirectory == (_(""))) {
         file.Write(_("#include \"") + headerFile + _("\"")); // Add an include with the name of the header file
