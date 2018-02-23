@@ -15,6 +15,7 @@
 #include <fstream>
 #include <string>
 #include <wx/dynarray.h>
+#include <wx/filefn.h>
 
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
@@ -81,6 +82,11 @@ int ImplementationGenerator::Execute()
         srcPath = implementationFile; // It will be this everytime until we add a way to read in the actual file path
     else
         srcPath.Append(implementationFile);
+
+    if(wxFileExists(srcPath)) {
+        instance->GetLogManager()->Log(_("File already exists! For now we are not dealing with this case... Sorry."));
+        return -1;
+    }
 
     wxFile file(srcPath, wxFile::OpenMode::write); // Open a file with the name of the implementation source file.
 
