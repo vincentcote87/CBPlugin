@@ -22,4 +22,4 @@ zip: createlib
 .PHONY: clean
 clean: 
 
-	rm -rf *~ *.layout *.cbplugin *.so *.depend *.zip
+	rm -rf *~ *.layout *.cbplugin *.so *.depend *.zip ./testPlugin
