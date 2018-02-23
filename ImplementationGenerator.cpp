@@ -121,5 +121,7 @@ int ImplementationGenerator::Execute()
     project->EndAddFiles();
     cbProjectManagerUI& uiManager = instance->GetProjectManager()->GetUI();
     uiManager.RebuildTree();
+
+    editInstance->Open(srcPath);
     return 0;
 }
