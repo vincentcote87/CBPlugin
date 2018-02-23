@@ -16,6 +16,7 @@
 					<Add option="`pkg-config --cflags codeblocks`" />
 					<Add option="`wx-config --cflags  --version=2.8`" />
 					<Add directory="$(cb.BASE)/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --libs codeblocks`" />
@@ -90,10 +91,14 @@
 		<Linker>
 			<Add option="-Wl,--no-undefined" />
 		</Linker>
-		<Unit filename="HelloWorld.h" />
-		<Unit filename="ImplementationGenerator.cpp" />
-		<Unit filename="ImplementationGenerator.h" />
+		<Unit filename="include/HelloWorld.h" />
+		<Unit filename="include/ImplementationGenerator.h" />
+		<Unit filename="include/InterfaceValidator.h" />
 		<Unit filename="manifest.xml" />
+		<Unit filename="src/ImplementationGenerator.cpp" />
+		<Unit filename="src/InterfaceValidator.cpp">
+			<Option target="default" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
