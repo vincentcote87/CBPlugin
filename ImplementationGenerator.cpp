@@ -3,6 +3,19 @@
 #include "ImplementationGenerator.h"
 
 #include <logmanager.h>
+#include <manager.h>
+#include <editormanager.h>
+#include <wx/string.h>
+#include <wx/file.h>
+#include <editorbase.h>
+#include <cbeditor.h>
+#include <projectmanager.h>
+#include <cbproject.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <wx/dynarray.h>
+#include <wx/filefn.h>
 
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
