@@ -9,14 +9,13 @@ using std::string;
 
 class InterfaceValidator {
     public:
-        InterfaceValidator(istream&);
-        string Next();
+        inline explicit InterfaceValidator(istream* interface) { _interface = interface; }
+        virtual ~InterfaceValidator() { delete _interface; }
+        virtual string next() = 0;
 
-    private:
-        istream& _interface;
-        int _currentLine;
-        bool validate(bool = true) const;
-        string ReadLine(int) const;
+    protected:
+        istream* _interface;
+        virtual bool validate(bool = true) const = 0;
 };
 
 #endif // INTERFACEVALIDATOR_H

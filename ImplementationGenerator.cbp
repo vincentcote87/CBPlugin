@@ -95,6 +95,9 @@
 		<Unit filename="include/ImplementationGenerator.h" />
 		<Unit filename="include/InterfaceValidator.h" />
 		<Unit filename="manifest.xml" />
+		<Unit filename="src/HelloWorld.cpp">
+			<Option target="default" />
+		</Unit>
 		<Unit filename="src/ImplementationGenerator.cpp" />
 		<Unit filename="src/InterfaceValidator.cpp">
 			<Option target="default" />
