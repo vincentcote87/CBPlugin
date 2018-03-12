@@ -16,3 +16,7 @@ string FileValidator::readLine() {
 
 
 }
+
+int FileValidator::findStartingLine() {
+
+}

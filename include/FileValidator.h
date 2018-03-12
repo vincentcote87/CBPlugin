@@ -8,6 +8,7 @@ using std::fstream;
 
 class FileValidator : public InterfaceValidator {
     public:
+        FileValidator() {}
         FileValidator(fstream*);
         virtual ~FileValidator() {}
         virtual string next() override;

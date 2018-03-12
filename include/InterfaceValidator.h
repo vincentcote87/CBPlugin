@@ -9,9 +9,11 @@ using std::string;
 
 class InterfaceValidator {
     public:
+        InterfaceValidator() {}
         inline explicit InterfaceValidator(istream* interface) { _interface = interface; }
         virtual ~InterfaceValidator() { delete _interface; }
         virtual string next() = 0;
+        virtual inline void setInterface(istream* interface) { _interface = interface; }
 
     protected:
         istream* _interface;
