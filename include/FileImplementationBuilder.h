@@ -24,11 +24,11 @@ using std::string;
 class FileImplemenationBuilder : public ImplementationBuilder {
     public:
         explicit FileImplemenationBuilder(InterfaceValidator*);
-        virtual ~FileImplemenationBuilder() {}
-        virtual int build(string) override;
-        virtual int buildActiveFile() override;
+        virtual ~FileImplemenationBuilder();
+        virtual string build(string) override;
     private:
-        wxFile _file;
+        string getImplementationName(const string&) const;
+
 };
 
 #endif // FILEIMPLEMENTATIONBUILDER_H

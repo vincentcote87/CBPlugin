@@ -10,8 +10,7 @@ class ImplementationBuilder {
     public:
         inline explicit ImplementationBuilder(InterfaceValidator* validator) : _validator{validator} {}
         virtual ~ImplementationBuilder() { delete _validator; }
-        virtual int build(string) = 0;
-        virtual int buildActiveFile() = 0;
+        virtual int build(wxString) = 0;
 
     protected:
         InterfaceValidator* _validator;
