@@ -40,6 +40,7 @@ class ImplemenetationGenGUIFrame: public wxFrame
         void OnButton1Click1(wxCommandEvent& event);
         void OnRadioBox1Select(wxCommandEvent& event);
         void OnFilePickerCtrl1FileChanged(wxFileDirPickerEvent& event);
+        void OnRadioBox1Select1(wxCommandEvent& event);
         //*)
 
         //(*Identifiers(ImplemenetationGenGUIFrame)
@@ -56,16 +57,18 @@ class ImplemenetationGenGUIFrame: public wxFrame
         //*)
 
         //(*Declarations(ImplemenetationGenGUIFrame)
-        wxDirPickerCtrl* DirPickerCtrl1;
-        wxDirPickerCtrl* DirPickerCtrl2;
-        wxDirPickerCtrl* DirPickerCtrl3;
+        wxDirPickerCtrl* HeaderSelect;
+        wxDirPickerCtrl* SourceSelect;
+        wxDirPickerCtrl* TestSelect;
         wxFileDialog* FileDialog1;
         wxRadioBox* RadioBox1;
         wxStaticText* HeaderText;
-        wxStaticText* StaticText2;
-        wxStaticText* StaticText3;
+        wxStaticText* SourceText;
+        wxStaticText* TestText;
         wxStatusBar* StatusBar1;
+        wxStdDialogButtonSizer* ButtonBox;
         //*)
+
 
         DECLARE_EVENT_TABLE()
 };
