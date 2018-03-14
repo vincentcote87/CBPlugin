@@ -1,0 +1,9 @@
+build-plugin:
+   stage: build
+   script:
+        - make -C ExamplePlugin bundle
+   artifacts:
+        paths:
+            - ExamplePlugin/Example.cbplugin
+   only:
+      - master
