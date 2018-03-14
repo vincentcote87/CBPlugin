@@ -72,7 +72,6 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     wxMenuBar* MenuBar1;
     wxMenuItem* MenuItem1;
     wxMenuItem* MenuItem2;
-    wxStdDialogButtonSizer* StdDialogButtonSizer1;
 
     Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
     SetClientSize(wxSize(399,324));
@@ -89,28 +88,28 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     HeaderText = new wxStaticText(this, ID_STATICTEXT1, _("Header Folder"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT1"));
     HeaderText->Disable();
     FlexGridSizer3->Add(HeaderText, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    DirPickerCtrl1 = new wxDirPickerCtrl(this, ID_DIRPICKERCTRL1, wxEmptyString, _("Select a directory"), wxDefaultPosition, wxDefaultSize, wxDIRP_DIR_MUST_EXIST, wxDefaultValidator, _T("ID_DIRPICKERCTRL1"));
-    DirPickerCtrl1->Disable();
-    FlexGridSizer3->Add(DirPickerCtrl1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    StaticText2 = new wxStaticText(this, ID_STATICTEXT2, _("Source Folder"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
-    StaticText2->Disable();
-    FlexGridSizer3->Add(StaticText2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    DirPickerCtrl2 = new wxDirPickerCtrl(this, ID_DIRPICKERCTRL2, wxEmptyString, _("Select a directory"), wxDefaultPosition, wxDefaultSize, wxDIRP_DIR_MUST_EXIST, wxDefaultValidator, _T("ID_DIRPICKERCTRL2"));
-    DirPickerCtrl2->Disable();
-    FlexGridSizer3->Add(DirPickerCtrl2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    StaticText3 = new wxStaticText(this, ID_STATICTEXT3, _("Label"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT3"));
-    StaticText3->Disable();
-    FlexGridSizer3->Add(StaticText3, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    DirPickerCtrl3 = new wxDirPickerCtrl(this, ID_DIRPICKERCTRL3, wxEmptyString, _("Select a directory"), wxDefaultPosition, wxDefaultSize, wxDIRP_DIR_MUST_EXIST, wxDefaultValidator, _T("ID_DIRPICKERCTRL3"));
-    DirPickerCtrl3->Disable();
-    FlexGridSizer3->Add(DirPickerCtrl3, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    HeaderSelect = new wxDirPickerCtrl(this, ID_DIRPICKERCTRL1, wxEmptyString, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDIRP_DIR_MUST_EXIST, wxDefaultValidator, _T("ID_DIRPICKERCTRL1"));
+    HeaderSelect->Disable();
+    FlexGridSizer3->Add(HeaderSelect, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    SourceText = new wxStaticText(this, ID_STATICTEXT2, _("Source Folder"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT2"));
+    SourceText->Disable();
+    FlexGridSizer3->Add(SourceText, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    SourceSelect = new wxDirPickerCtrl(this, ID_DIRPICKERCTRL2, wxEmptyString, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDIRP_DIR_MUST_EXIST, wxDefaultValidator, _T("ID_DIRPICKERCTRL2"));
+    SourceSelect->Disable();
+    FlexGridSizer3->Add(SourceSelect, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    TestText = new wxStaticText(this, ID_STATICTEXT3, _("Test Folder"), wxDefaultPosition, wxDefaultSize, 0, _T("ID_STATICTEXT3"));
+    TestText->Disable();
+    FlexGridSizer3->Add(TestText, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    TestSelect = new wxDirPickerCtrl(this, ID_DIRPICKERCTRL3, wxEmptyString, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDIRP_DIR_MUST_EXIST, wxDefaultValidator, _T("ID_DIRPICKERCTRL3"));
+    TestSelect->Disable();
+    FlexGridSizer3->Add(TestSelect, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer2->Add(FlexGridSizer3, 1, wxALL|wxEXPAND, 5);
     FlexGridSizer1->Add(FlexGridSizer2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    StdDialogButtonSizer1 = new wxStdDialogButtonSizer();
-    StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
-    StdDialogButtonSizer1->AddButton(new wxButton(this, wxID_CANCEL, wxEmptyString));
-    StdDialogButtonSizer1->Realize();
-    FlexGridSizer1->Add(StdDialogButtonSizer1, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
+    ButtonBox = new wxStdDialogButtonSizer();
+    ButtonBox->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
+    ButtonBox->AddButton(new wxButton(this, wxID_CANCEL, wxEmptyString));
+    ButtonBox->Realize();
+    FlexGridSizer1->Add(ButtonBox, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
     SetSizer(FlexGridSizer1);
     MenuBar1 = new wxMenuBar();
     Menu1 = new wxMenu();
@@ -132,6 +131,7 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     SetSizer(FlexGridSizer1);
     Layout();
 
+    Connect(ID_RADIOBOX1,wxEVT_COMMAND_RADIOBOX_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnRadioBox1Select1);
     Connect(ID_MENUITEM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnAbout);
     //*)
@@ -160,11 +160,10 @@ void ImplemenetationGenGUIFrame::OnRadioButton1Select(wxCommandEvent& event)
 
 void ImplemenetationGenGUIFrame::OnButton1Click(wxCommandEvent& event)
 {
+    HeaderText->SetLabel(_("HAHASDF"));
+    Layout();
 }
 
-void ImplemenetationGenGUIFrame::OnRadioButton2Select(wxCommandEvent& event)
-{
-}
 
 void ImplemenetationGenGUIFrame::OnRadioButton1Select1(wxCommandEvent& event)
 {
@@ -174,11 +173,36 @@ void ImplemenetationGenGUIFrame::OnButton1Click1(wxCommandEvent& event)
 {
 }
 
-void ImplemenetationGenGUIFrame::OnRadioBox1Select(wxCommandEvent& event)
-{
-
-}
 
 void ImplemenetationGenGUIFrame::OnFilePickerCtrl1FileChanged(wxFileDirPickerEvent& event)
 {
+
 }
+
+void ImplemenetationGenGUIFrame::OnRadioBox1Select1(wxCommandEvent& event)
+{
+    //RadioBox1->Show(,false);
+    if(RadioBox1->GetSelection() == 0)
+    {
+        HeaderText->Enable(false);
+        HeaderSelect->Enable(false);
+        SourceText->Enable(false);
+        SourceSelect->Enable(false);
+        TestText->Enable(false);
+        TestSelect->Enable(false);
+    }
+    else
+    {
+        HeaderText->Enable(true);
+        HeaderSelect->Enable(true);
+        SourceText->Enable(true);
+        SourceSelect->Enable(true);
+        TestSelect->Enable(true);
+        TestText->Enable(true);
+    }
+    //HeaderText->SetLabel(RadioBox1->GetString(RadioBox1->GetSelection()));
+    //HeaderText->Enable(true);
+    Layout();
+}
+
+
