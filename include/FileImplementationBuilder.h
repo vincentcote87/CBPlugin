@@ -18,7 +18,9 @@
 #include <fstream>
 #include <wx/dynarray.h>
 #include <wx/filefn.h>
+#include <fstream>
 
+using std::fstream;
 using std::string;
 
 class FileImplemenationBuilder : public ImplementationBuilder {
@@ -26,6 +28,8 @@ class FileImplemenationBuilder : public ImplementationBuilder {
         explicit FileImplemenationBuilder(InterfaceValidator*);
         virtual ~FileImplemenationBuilder();
         virtual string build(string) override;
+
+
     private:
         string getImplementationName(const string&) const;
 

@@ -71,7 +71,6 @@ int ImplementationGenerator::Execute()
 
     InterfaceValidator* validator = new FileValidator();
     ImplementationBuilder* fileBuilder = new FileImplemenationBuilder(validator);
-    fileBuilder->buildActiveFile();
 
     return 0;
 }

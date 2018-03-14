@@ -8,10 +8,13 @@ using std::string;
 
 class ImplementationBuilder {
     public:
-        inline explicit ImplementationBuilder(InterfaceValidator* validator) : _validator{validator} {}
+        ImplementationBuilder();
+        ImplementationBuilder(InterfaceValidator* validator) : _validator{validator} {}
         virtual ~ImplementationBuilder() { delete _validator; }
-        virtual int build(wxString) = 0;
+        virtual string build(string) = 0;
+        inline virtual const InterfaceValidator& getValidator() const { return *(_validator); }
 
+        friend bool operator==(const ImplementationBuilder&, const ImplementationBuilder&);
     protected:
         InterfaceValidator* _validator;
 };

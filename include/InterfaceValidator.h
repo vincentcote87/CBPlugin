@@ -10,11 +10,15 @@ using std::string;
 class InterfaceValidator {
     public:
         InterfaceValidator() {}
-        inline explicit InterfaceValidator(istream* interface) { _interface = interface; }
+        InterfaceValidator(istream* is) { _interface = is; }
         virtual ~InterfaceValidator() { delete _interface; }
         virtual string next() = 0;
         virtual inline void setInterface(istream* interface) { _interface = interface; }
+        virtual inline void setInterface(istream& interface) { _interface = &interface; }
+        inline const istream& getInterface() const { return *(_interface); }
 
+        friend bool operator==(const InterfaceValidator&, const InterfaceValidator&);
+        InterfaceValidator& operator=(const InterfaceValidator&);
     protected:
         istream* _interface;
         virtual bool validate(bool = true) const = 0;
