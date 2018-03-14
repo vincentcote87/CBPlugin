@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Cheat" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/Cheat" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+					<Add directory="test" />
+				</Compiler>
+				<Linker>
+					<Add option="-lgtest" />
+					<Add option="/usr/src/gmock/gmock-all.cc" />
+					<Add option="-lpthread" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/Cheat" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-fexceptions" />
+		</Compiler>
+		<Unit filename="Makefile" />
+		<Unit filename="include/Card.h" />
+		<Unit filename="include/CheatController.h" />
+		<Unit filename="include/CheatView.h" />
+		<Unit filename="include/Deck.h" />
+		<Unit filename="include/GoFishController.h" />
+		<Unit filename="include/GoFishModel.h" />
+		<Unit filename="include/GoFishView.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="src/Card.cpp" />
+		<Unit filename="src/CheatController.cpp" />
+		<Unit filename="src/CheatView.cpp" />
+		<Unit filename="src/Deck.cpp" />
+		<Unit filename="src/GoFishController.cpp" />
+		<Unit filename="src/GoFishModel.cpp" />
+		<Unit filename="src/GoFishView.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/cardGame.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="test/CardTest.cpp" />
+		<Unit filename="test/CheatControllerTest.cpp" />
+		<Unit filename="test/CheatControllerTest.h" />
+		<Unit filename="test/DeckTest.cpp" />
+		<Unit filename="test/GoFishControllerTest.cpp" />
+		<Unit filename="test/GoFishModelTest.cpp" />
+		<Unit filename="test/MockCard.cpp" />
+		<Unit filename="test/MockCheatView.cpp" />
+		<Unit filename="test/MockDeck.cpp" />
+		<Unit filename="test/MockGoFishModel.cpp" />
+		<Unit filename="test/MockGoFishView.cpp" />
+		<Unit filename="test/MockPlayer.cpp" />
+		<Unit filename="test/PlayerTest.cpp" />
+		<Unit filename="test/TestAll.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
