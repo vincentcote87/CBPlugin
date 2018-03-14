@@ -1,9 +1,9 @@
 build-plugin:
    stage: build
    script:
-        - make -C ExamplePlugin bundle
+        - make -C ImplementationGenerator bundle
    artifacts:
         paths:
-            - ExamplePlugin/Example.cbplugin
+            - ImplementationGenerator.cbplugin
    only:
       - master
