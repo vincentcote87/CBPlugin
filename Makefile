@@ -35,7 +35,7 @@ clean:
 
 $(PLUGIN).so: 
 #$(PLUGIN).cpp
-	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o $(SRC_DIR)/*.cpp -I $(SRC_INCLUDE) $(CB_CFLAGS) $(WX_CFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o -c $(SRC_DIR)/*.cpp -I $(SRC_INCLUDE) $(CB_CFLAGS) $(WX_CFLAGS)
 	$(CXX) -shared $(PLUGIN).o  -o $(PLUGIN).so $(CB_LIBS) $(WX_LIBS)
 
 bundle: $(PLUGIN).so manifest.xml
