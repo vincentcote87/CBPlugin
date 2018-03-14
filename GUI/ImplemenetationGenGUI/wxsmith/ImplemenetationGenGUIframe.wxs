@@ -43,6 +43,7 @@
 								<object class="wxDirPickerCtrl" name="ID_DIRPICKERCTRL1" variable="HeaderSelect" member="yes">
 									<message></message>
 									<enabled>0</enabled>
+									<handler function="OnHeaderSelectDirChanged" entry="EVT_DIRPICKER_CHANGED" />
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
@@ -61,6 +62,7 @@
 								<object class="wxDirPickerCtrl" name="ID_DIRPICKERCTRL2" variable="SourceSelect" member="yes">
 									<message></message>
 									<enabled>0</enabled>
+									<handler function="OnSourceSelectDirChanged" entry="EVT_DIRPICKER_CHANGED" />
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
@@ -79,6 +81,7 @@
 								<object class="wxDirPickerCtrl" name="ID_DIRPICKERCTRL3" variable="TestSelect" member="yes">
 									<message></message>
 									<enabled>0</enabled>
+									<handler function="OnTestSelectDirChanged" entry="EVT_DIRPICKER_CHANGED" />
 								</object>
 								<flag>wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL</flag>
 								<border>5</border>
