@@ -1,0 +1,10 @@
+build-plugin:
+   stage: build
+   script:
+        - make 
+        #-C ImplementationGenerator bundle
+   artifacts:
+        paths:
+            - ImplementationGenerator.cbplugin
+   only:
+      - master
