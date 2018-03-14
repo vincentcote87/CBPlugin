@@ -132,6 +132,9 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     Layout();
 
     Connect(ID_RADIOBOX1,wxEVT_COMMAND_RADIOBOX_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnRadioBox1Select1);
+    Connect(ID_DIRPICKERCTRL1,wxEVT_COMMAND_DIRPICKER_CHANGED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnHeaderSelectDirChanged);
+    Connect(ID_DIRPICKERCTRL2,wxEVT_COMMAND_DIRPICKER_CHANGED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnSourceSelectDirChanged);
+    Connect(ID_DIRPICKERCTRL3,wxEVT_COMMAND_DIRPICKER_CHANGED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnTestSelectDirChanged);
     Connect(ID_MENUITEM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnAbout);
     //*)
@@ -146,6 +149,7 @@ ImplemenetationGenGUIFrame::~ImplemenetationGenGUIFrame()
 void ImplemenetationGenGUIFrame::OnQuit(wxCommandEvent& event)
 {
     event.Skip(TRUE);
+    Close();
 }
 
 void ImplemenetationGenGUIFrame::OnAbout(wxCommandEvent& event)
@@ -154,30 +158,8 @@ void ImplemenetationGenGUIFrame::OnAbout(wxCommandEvent& event)
     wxMessageBox(msg, _("Implementation Generator"));
 }
 
-void ImplemenetationGenGUIFrame::OnRadioButton1Select(wxCommandEvent& event)
-{
-}
-
-void ImplemenetationGenGUIFrame::OnButton1Click(wxCommandEvent& event)
-{
-    HeaderText->SetLabel(_("HAHASDF"));
-    Layout();
-}
 
 
-void ImplemenetationGenGUIFrame::OnRadioButton1Select1(wxCommandEvent& event)
-{
-}
-
-void ImplemenetationGenGUIFrame::OnButton1Click1(wxCommandEvent& event)
-{
-}
-
-
-void ImplemenetationGenGUIFrame::OnFilePickerCtrl1FileChanged(wxFileDirPickerEvent& event)
-{
-
-}
 
 void ImplemenetationGenGUIFrame::OnRadioBox1Select1(wxCommandEvent& event)
 {
@@ -200,9 +182,30 @@ void ImplemenetationGenGUIFrame::OnRadioBox1Select1(wxCommandEvent& event)
         TestSelect->Enable(true);
         TestText->Enable(true);
     }
-    //HeaderText->SetLabel(RadioBox1->GetString(RadioBox1->GetSelection()));
+
+    //HeaderSelect->GetPath(); FOR WXSTRING
+    //HeaderSelect->GetDirName(); FOR WXFILEPATH
     //HeaderText->Enable(true);
     Layout();
 }
 
 
+
+void ImplemenetationGenGUIFrame::OnSourceSelectDirChanged(wxFileDirPickerEvent& event)
+{
+    *Source = SourceSelect->GetPath();
+    Layout();
+}
+
+void ImplemenetationGenGUIFrame::OnTestSelectDirChanged(wxFileDirPickerEvent& event)
+{
+    *Test = TestSelect->GetPath();
+    Layout();
+}
+
+void ImplemenetationGenGUIFrame::OnHeaderSelectDirChanged(wxFileDirPickerEvent& event)
+{
+    *Header = HeaderSelect->GetPath();
+    //HeaderText->SetLabel(_("HI"));
+    Layout();
+}
