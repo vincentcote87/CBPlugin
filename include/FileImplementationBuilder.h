@@ -20,7 +20,7 @@
 #include <wx/filefn.h>
 #include <fstream>
 
-using std::fstream;
+using std::ofstream;
 using std::string;
 
 class FileImplemenationBuilder : public ImplementationBuilder {
@@ -32,6 +32,7 @@ class FileImplemenationBuilder : public ImplementationBuilder {
 
     private:
         string getImplementationName(const string&) const;
+        string getHeaderFileName(const string&) const;
 
 };
 
