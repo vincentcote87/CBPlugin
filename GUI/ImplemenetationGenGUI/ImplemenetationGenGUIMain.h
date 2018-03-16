@@ -11,6 +11,7 @@
 #define IMPLEMENETATIONGENGUIMAIN_H
 
 //(*Headers(ImplemenetationGenGUIFrame)
+#include <wx/button.h>
 #include <wx/filedlg.h>
 #include <wx/filepicker.h>
 #include <wx/frame.h>
@@ -27,6 +28,13 @@ class ImplemenetationGenGUIFrame: public wxFrame
 
         ImplemenetationGenGUIFrame(wxWindow* parent,wxWindowID id = -1);
         virtual ~ImplemenetationGenGUIFrame();
+        bool useSourceDefault = true;
+        bool useHeaderDefault = true;
+        bool useTestDefault = true;
+        bool canGrab = false;
+        wxString* getSourceDir();
+        wxString* getTestDir();
+        wxString* getHeaderDir();
 
     private:
 
@@ -44,6 +52,7 @@ class ImplemenetationGenGUIFrame: public wxFrame
         void OnSourceSelectDirChanged(wxFileDirPickerEvent& event);
         void OnTestSelectDirChanged(wxFileDirPickerEvent& event);
         void OnHeaderSelectDirChanged(wxFileDirPickerEvent& event);
+        void OnOKClick2(wxCommandEvent& event);
         //*)
 
         //(*Identifiers(ImplemenetationGenGUIFrame)
@@ -54,12 +63,17 @@ class ImplemenetationGenGUIFrame: public wxFrame
         static const long ID_DIRPICKERCTRL2;
         static const long ID_STATICTEXT3;
         static const long ID_DIRPICKERCTRL3;
+        static const long ID_BUTTON1;
+        static const long ID_BUTTON2;
         static const long ID_MENUITEM1;
         static const long idMenuAbout;
         static const long ID_STATUSBAR1;
         //*)
 
         //(*Declarations(ImplemenetationGenGUIFrame)
+        wxBoxSizer* BoxSizer1;
+        wxButton* Button1;
+        wxButton* Button2;
         wxDirPickerCtrl* HeaderSelect;
         wxDirPickerCtrl* SourceSelect;
         wxDirPickerCtrl* TestSelect;
@@ -69,7 +83,6 @@ class ImplemenetationGenGUIFrame: public wxFrame
         wxStaticText* SourceText;
         wxStaticText* TestText;
         wxStatusBar* StatusBar1;
-        wxStdDialogButtonSizer* ButtonBox;
         //*)
         wxString* Header;
         wxString* Source;
