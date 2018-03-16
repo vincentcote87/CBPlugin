@@ -1,5 +1,6 @@
 #include "FileImplementationBuilder.h"
 
+
 FileImplemenationBuilder::FileImplemenationBuilder(InterfaceValidator* validator) : ImplementationBuilder(validator) {
 
 }
@@ -8,31 +9,66 @@ FileImplemenationBuilder::~FileImplemenationBuilder() {}
 
 
 string FileImplemenationBuilder::build(string implementationToBuild) {
-    string headerFile = implementationToBuild; // The title is the name that appears on the tab above
+    string headerFile = implementationToBuild;
     string implementationFile = getImplementationName(headerFile);
 
-    string srcPath = "src/"; // Additional path interface. Trying to be extensible to something like src/whatever.cpp
-    if(srcPath == "")
-        srcPath = implementationFile; // It will be this everytime until we add a way to read in the actual file path
-    else
-        srcPath += implementationFile;
+    if(implementationFile == "")
+        return implementationFile;
 
-    fstream file(srcPath);
+    ofstream file(implementationFile);
 
+    if(!file.is_open()) {
+        implementationFile += "!";
+        return implementationFile;
+    }
 
     // TODO: May not need as people will usually link their include folders
-    file << "#include \"" + headerFile + "\"\n"; // Add an include with the name of the header file
-    return srcPath;
+    file << "#include \"" + getHeaderFileName(headerFile) + "\"\n"; // Add an include with the name of the header file
+
+    file.close();
+    return implementationFile;
 }
 
 string FileImplemenationBuilder::getImplementationName(const string& headerName) const {
     string implementationName = headerName;
-    size_t indexOfExtension = implementationName.find(".h");
+    size_t indexOfFileName = implementationName.find_last_of('/');
+    if(indexOfFileName == string::npos)
+        return "";
+
+    string fileName = implementationName.substr(indexOfFileName+1);
+
+    size_t indexOfFolderName = implementationName.find("include");
+    if(indexOfFolderName == string::npos)
+        return "";
+
+    implementationName = implementationName.erase(indexOfFolderName);
+    implementationName += "src/";
+
+    size_t indexOfExtension = fileName.find('.');
     if(indexOfExtension == string::npos)
         return "";
 
-    implementationName = implementationName.erase(indexOfExtension);
-    implementationName += ".cpp";
+    fileName = fileName.erase(indexOfExtension);
+    fileName += ".cpp";
+
+    implementationName += fileName;
 
     return implementationName;
+}
+
+string FileImplemenationBuilder::getHeaderFileName(const string& headerName) const {
+    string filePath = headerName;
+    size_t indexOfFileName = filePath.find_last_of('/');
+    size_t indexOfEndOfFileName = filePath.find_last_of(".h");
+
+    if(indexOfEndOfFileName == string::npos) {
+        return "";
+    }
+
+    string fileName = filePath.erase(indexOfEndOfFileName+1);
+    if(indexOfFileName == string::npos) {
+        return "";
+    }
+
+    return filePath.substr(indexOfFileName+1);
 }
