@@ -19,6 +19,7 @@
 
 #include "FileValidator.h"
 #include "FileImplementationBuilder.h"
+#include "CBImplementationBuilder.h"
 
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
@@ -68,9 +69,10 @@ int ImplementationGenerator::Execute()
     if(!IsAttached())
         return -1;
 
-
     InterfaceValidator* validator = new FileValidator();
     ImplementationBuilder* fileBuilder = new FileImplemenationBuilder(validator);
 
-    return 0;
+    CBImplementationBuilder* cbIB = new CBImplementationBuilder(fileBuilder);
+
+    return cbIB->build();
 }

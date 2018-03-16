@@ -21,10 +21,8 @@ class FileValidator : public InterfaceValidator {
         FileValidator& operator=(const FileValidator&);
     protected:
         virtual bool validate(bool = true) const override;
-
-    private:
-        string readLine();
-        int findStartingLine();
+        virtual string readLine();
+        virtual int findStartingLine();
         int _currentLine = 1;
 };
 #endif // FILEVALIDATOR_H
