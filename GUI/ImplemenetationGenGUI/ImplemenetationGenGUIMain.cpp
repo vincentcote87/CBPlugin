@@ -12,7 +12,6 @@
 #include <wx/msgdlg.h>
 
 //(*InternalHeaders(ImplemenetationGenGUIFrame)
-#include <wx/button.h>
 #include <wx/intl.h>
 #include <wx/string.h>
 //*)
@@ -51,6 +50,8 @@ const long ImplemenetationGenGUIFrame::ID_STATICTEXT2 = wxNewId();
 const long ImplemenetationGenGUIFrame::ID_DIRPICKERCTRL2 = wxNewId();
 const long ImplemenetationGenGUIFrame::ID_STATICTEXT3 = wxNewId();
 const long ImplemenetationGenGUIFrame::ID_DIRPICKERCTRL3 = wxNewId();
+const long ImplemenetationGenGUIFrame::ID_BUTTON1 = wxNewId();
+const long ImplemenetationGenGUIFrame::ID_BUTTON2 = wxNewId();
 const long ImplemenetationGenGUIFrame::ID_MENUITEM1 = wxNewId();
 const long ImplemenetationGenGUIFrame::idMenuAbout = wxNewId();
 const long ImplemenetationGenGUIFrame::ID_STATUSBAR1 = wxNewId();
@@ -105,11 +106,12 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     FlexGridSizer3->Add(TestSelect, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
     FlexGridSizer2->Add(FlexGridSizer3, 1, wxALL|wxEXPAND, 5);
     FlexGridSizer1->Add(FlexGridSizer2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
-    ButtonBox = new wxStdDialogButtonSizer();
-    ButtonBox->AddButton(new wxButton(this, wxID_OK, wxEmptyString));
-    ButtonBox->AddButton(new wxButton(this, wxID_CANCEL, wxEmptyString));
-    ButtonBox->Realize();
-    FlexGridSizer1->Add(ButtonBox, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
+    BoxSizer1 = new wxBoxSizer(wxHORIZONTAL);
+    Button1 = new wxButton(this, ID_BUTTON1, _("OK"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON1"));
+    BoxSizer1->Add(Button1, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    Button2 = new wxButton(this, ID_BUTTON2, _("Cancel"), wxDefaultPosition, wxDefaultSize, 0, wxDefaultValidator, _T("ID_BUTTON2"));
+    BoxSizer1->Add(Button2, 1, wxALL|wxALIGN_CENTER_HORIZONTAL|wxALIGN_CENTER_VERTICAL, 5);
+    FlexGridSizer1->Add(BoxSizer1, 1, wxALL|wxALIGN_RIGHT|wxALIGN_CENTER_VERTICAL, 5);
     SetSizer(FlexGridSizer1);
     MenuBar1 = new wxMenuBar();
     Menu1 = new wxMenu();
@@ -135,6 +137,8 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     Connect(ID_DIRPICKERCTRL1,wxEVT_COMMAND_DIRPICKER_CHANGED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnHeaderSelectDirChanged);
     Connect(ID_DIRPICKERCTRL2,wxEVT_COMMAND_DIRPICKER_CHANGED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnSourceSelectDirChanged);
     Connect(ID_DIRPICKERCTRL3,wxEVT_COMMAND_DIRPICKER_CHANGED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnTestSelectDirChanged);
+    Connect(ID_BUTTON1,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnQuit);
+    Connect(ID_BUTTON2,wxEVT_COMMAND_BUTTON_CLICKED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnQuit);
     Connect(ID_MENUITEM1,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnQuit);
     Connect(idMenuAbout,wxEVT_COMMAND_MENU_SELECTED,(wxObjectEventFunction)&ImplemenetationGenGUIFrame::OnAbout);
     //*)
@@ -150,6 +154,10 @@ void ImplemenetationGenGUIFrame::OnQuit(wxCommandEvent& event)
 {
     event.Skip(TRUE);
     Close();
+    if(!Source->IsEmpty()) useSourceDefault = false;
+    if(!Header->IsEmpty()) useSourceDefault = false;
+    if(!Test->IsNull()) useTestDefault = false;
+    canGrab = true;
 }
 
 void ImplemenetationGenGUIFrame::OnAbout(wxCommandEvent& event)
@@ -157,7 +165,6 @@ void ImplemenetationGenGUIFrame::OnAbout(wxCommandEvent& event)
     wxString msg = wxbuildinfo(long_f);
     wxMessageBox(msg, _("Implementation Generator"));
 }
-
 
 
 
@@ -209,3 +216,20 @@ void ImplemenetationGenGUIFrame::OnHeaderSelectDirChanged(wxFileDirPickerEvent& 
     //HeaderText->SetLabel(_("HI"));
     Layout();
 }
+
+wxString* ImplemenetationGenGUIFrame::getSourceDir()
+{
+    return Source;
+}
+
+wxString* ImplemenetationGenGUIFrame::getHeaderDir()
+{
+    return Header;
+}
+
+wxString* ImplemenetationGenGUIFrame::getTestDir()
+{
+    return Test;
+}
+
+
