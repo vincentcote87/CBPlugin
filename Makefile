@@ -11,16 +11,17 @@ WX_LIBS = `wx-config --libs  --version=2.8`
 
 SRC_DIR = ./src
 SRC_INCLUDE = ./include
-SRCS =
+SRCS = -I {SRC_DIR}
 
-TEST_DIR = test
-TEST_INCLUDE = test
+TEST_DIR = ./test
+TEST_INCLUDE = ./test
+INCLUDE = -I ${SRC_INCLUDE} -I ${TEST_INCLUDE}
 
 ZIP = zip
 ZIP_FLAGS = -j
 
 PLUGIN = ImplementationGenerator
-PLUGIN_TEST = test_$(PLUGIN)
+PLUGIN_TEST = testPlugin
 
 .PHONY: all
 all: bundle
@@ -41,3 +42,7 @@ $(PLUGIN).so:
 bundle: $(PLUGIN).so manifest.xml
 		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).zip manifest.xml
 		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).cbplugin $(PLUGIN).so $(PLUGIN).zip
+
+$(PLUGIN_TEST): $(TEST_DIR)/*.cpp
+	$(CXX) $(CXXFLAGS) -o $(PLUGIN_TEST) $(INCLUDE) $(TEST_DIR)/*.cpp $(SRCS) $(LINKFLAGS) $(GMOCK)
+	./$(PLUGIN_TEST)

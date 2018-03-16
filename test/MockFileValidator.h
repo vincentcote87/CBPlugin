@@ -1,6 +1,6 @@
 #ifndef MOCKFILEVALIDATOR_H
 #define MOCKFILEVALIDATOR_H
-
+#include "gmock/gmock.h"
 #include "FileValidator.h"
 
 class MockFileValidator : public FileValidator {

@@ -17,6 +17,7 @@
 					<Add option="`wx-config --cflags  --version=2.8`" />
 					<Add directory="$(cb.BASE)/include" />
 					<Add directory="include" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add option="`pkg-config --libs codeblocks`" />
@@ -85,17 +86,20 @@
 				<Option object_output=".objs/default" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="`pkg-config --cflags codeblocks`" />
 					<Add option="`wx-config --cflags  --version=2.8`" />
+					<Add directory="test" />
 					<Add directory="$(cb.BASE)/include" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
+					<Add option="-lgtest" />
+					<Add option="-lpthread" />
+					<Add option="/usr/src/gmock/gmock-all.cc" />
 					<Add option="`pkg-config --libs codeblocks`" />
 					<Add option="`wx-config --libs  --version=2.8`" />
-					<Add option="-lgtest" />
 				</Linker>
 				<ExtraCommands>
 					<Add after="zip -j9 ImplementationGenerator.zip manifest.xml" />
@@ -119,9 +123,31 @@
 		<Unit filename="include/FileValidator.h" />
 		<Unit filename="include/HelloWorld.h" />
 		<Unit filename="include/ImplementationBuilder.h" />
-		<Unit filename="include/ImplementationGenerator.h" />
+		<Unit filename="include/ImplementationGenerator.h">
+			<Option target="default" />
+			<Option target="to_codeblocks_wx28" />
+			<Option target="to_codeblocks_wx30" />
+		</Unit>
 		<Unit filename="include/InterfaceValidator.h" />
 		<Unit filename="manifest.xml" />
+		<Unit filename="src/CBImplementationBuilder.cpp" />
+		<Unit filename="src/FileImplementationBuilder.cpp" />
+		<Unit filename="src/FileValidator.cpp" />
+		<Unit filename="src/HelloWorld.cpp">
+			<Option target="default" />
+		</Unit>
+		<Unit filename="src/ImplementationBuilder.cpp" />
+		<Unit filename="src/ImplementationGenerator.cpp">
+			<Option target="default" />
+			<Option target="to_codeblocks_wx28" />
+			<Option target="to_codeblocks_wx30" />
+		</Unit>
+		<Unit filename="src/InterfaceValidator.cpp" />
+		<Unit filename="test/FileImplementationBuilderTest.cpp">
+			<Option target="RunTest" />
+		</Unit>
+		<Unit filename="test/FileImplementationBuilderTest.h" />
+		<Unit filename="test/MockFileValidator.h" />
 		<Unit filename="test/testMain.cpp" />
 		<Extensions>
 			<code_completion />
