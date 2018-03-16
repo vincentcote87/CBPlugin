@@ -9,6 +9,8 @@ FileImplemenationBuilder::~FileImplemenationBuilder() {}
 
 
 string FileImplemenationBuilder::build(string implementationToBuild) {
+    _validator->setInterface(implementationToBuild);
+
     string headerFile = implementationToBuild;
     string implementationFile = getImplementationName(headerFile);
 
@@ -24,6 +26,8 @@ string FileImplemenationBuilder::build(string implementationToBuild) {
 
     // TODO: May not need as people will usually link their include folders
     file << "#include \"" + getHeaderFileName(headerFile) + "\"\n"; // Add an include with the name of the header file
+
+    // Validation steps
 
     file.close();
     return implementationFile;

@@ -15,6 +15,7 @@ class InterfaceValidator {
         virtual string next() = 0;
         virtual inline void setInterface(istream* interface) { _interface = interface; }
         virtual inline void setInterface(istream& interface) { _interface = &interface; }
+        virtual void setInterface(const string&) = 0;
         inline const istream& getInterface() const { return *(_interface); }
 
         friend bool operator==(const InterfaceValidator&, const InterfaceValidator&);
