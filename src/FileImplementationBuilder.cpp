@@ -25,8 +25,12 @@ string FileImplemenationBuilder::build(string implementationToBuild) {
     }
 
     // TODO: May not need as people will usually link their include folders
-    file << "#include \"" + getHeaderFileName(headerFile) + "\"\n"; // Add an include with the name of the header file
-
+    file << "#include \"" + getHeaderFileName(headerFile) + "\"\n\n"; // Add an include with the name of the header file
+    while(!_validator->endOfStream()) {
+        string lineToWrite = _validator->next();
+        if(lineToWrite != "")
+            file << lineToWrite;
+    }
     // Validation steps
 
     file.close();

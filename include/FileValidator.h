@@ -18,14 +18,18 @@ class FileValidator : public InterfaceValidator {
         virtual ~FileValidator() {}
         virtual string next() override;
         virtual void setInterface(const string&) override;
+        bool endOfStream() const override;
+
 
         friend bool operator==(const FileValidator&, const FileValidator&);
         FileValidator& operator=(const FileValidator&);
     protected:
-        virtual bool validate(bool = true) const override;
+        virtual bool validate(const string&) const override;
         virtual string readLine();
         virtual int findStartingLine();
         ifstream* _file;
         int _currentLine = 1;
+        bool _endOfFile = false;
+        string _fileName;
 };
 #endif // FILEVALIDATOR_H

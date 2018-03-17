@@ -3,7 +3,7 @@
 
 class HelloWorld {
     public:
-        HelloWorld() {}
+        HelloWorld();
 
 };
 #endif // HELLOWORLD_H
