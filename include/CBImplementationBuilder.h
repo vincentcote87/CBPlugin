@@ -7,6 +7,7 @@
 #include "ImplementationBuilder.h"
 #include "editorbase.h"
 #include "cbproject.h"
+#include <wx/wxchar.h>
 
 class CBImplementationBuilder {
     public:

@@ -15,13 +15,15 @@ class InterfaceValidator {
         virtual string next() = 0;
         virtual inline void setInterface(istream* interface) { _interface = interface; }
         virtual inline void setInterface(istream& interface) { _interface = &interface; }
+        virtual void setInterface(const string&) = 0;
         inline const istream& getInterface() const { return *(_interface); }
+        virtual bool endOfStream() const = 0;
 
         friend bool operator==(const InterfaceValidator&, const InterfaceValidator&);
         InterfaceValidator& operator=(const InterfaceValidator&);
     protected:
         istream* _interface;
-        virtual bool validate(bool = true) const = 0;
+        virtual bool validate(const string&) const = 0;
 };
 
 #endif // INTERFACEVALIDATOR_H

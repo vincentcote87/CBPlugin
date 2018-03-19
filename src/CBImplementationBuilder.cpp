@@ -14,7 +14,13 @@ CBImplementationBuilder::~CBImplementationBuilder() {
 
 int CBImplementationBuilder::build() {
     wxString header = _editorManager->GetActiveEditor()->GetName();
+    wxString title = _editorManager->GetActiveEditor()->GetTitle();
+
+    wxChar nl = '\n';
+    header = header.Remove(header.Find(nl));
     _logManager->Log(_("Name of path given: ") + header);
+
+    _editorManager->CloseActive();
 
     string output = _builder->build(toString(header));
 
