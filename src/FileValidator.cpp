@@ -36,7 +36,7 @@ string FileValidator::next() {
         if(terminatorPos == string::npos)
             return "";
         nextLine = nextLine.erase(terminatorPos);
-        nextLine += " {\n\t\n}";
+        nextLine += " {\n\t\n}\n\n";
         nextLine = _fileName + "::" + nextLine;
         return nextLine;
     }
