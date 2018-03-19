@@ -121,13 +121,10 @@
 		<Unit filename="include/ImplementationBuilder.h" />
 		<Unit filename="include/ImplementationGenerator.h" />
 		<Unit filename="include/InterfaceValidator.h" />
+		<Unit filename="include/UnexceptionalPlugin.h" />
 		<Unit filename="manifest.xml" />
 		<Unit filename="src/CBImplementationBuilder.cpp" />
 		<Unit filename="src/FileImplementationBuilder.cpp" />
-		<Unit filename="src/FileValidator.cpp" />
-		<Unit filename="src/HelloWorld.cpp">
-			<Option target="default" />
-		</Unit>
 		<Unit filename="src/ImplementationBuilder.cpp" />
 		<Unit filename="src/ImplementationGenerator.cpp" />
 		<Unit filename="src/InterfaceValidator.cpp" />
