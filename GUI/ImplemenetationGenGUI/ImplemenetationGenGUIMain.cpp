@@ -75,7 +75,7 @@ ImplemenetationGenGUIFrame::ImplemenetationGenGUIFrame(wxWindow* parent,wxWindow
     wxMenuItem* MenuItem2;
 
     Create(parent, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE, _T("wxID_ANY"));
-    SetClientSize(wxSize(399,324));
+    SetClientSize(wxSize(362,238));
     FlexGridSizer1 = new wxFlexGridSizer(2, 1, 0, 0);
     FlexGridSizer2 = new wxFlexGridSizer(2, 2, 0, 0);
     wxString __wxRadioBoxChoices_1[2] =
