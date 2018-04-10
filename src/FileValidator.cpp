@@ -27,27 +27,13 @@ FileValidator::FileValidator(const string& filename) {
 string FileValidator::next() {
     string nextLine = readLine();
     if(validate(nextLine)) {
-        Manager::Get()->GetLogManager()->Log(wxString(nextLine.c_str(), wxConvUTF8) + _(" is valid!"));
-        size_t firstLetter = nextLine.find_first_not_of("\t ");
-        if(firstLetter == string::npos)
-            return "";
-        nextLine = nextLine.substr(firstLetter);
-        size_t terminatorPos = nextLine.find(';');
-        if(terminatorPos == string::npos)
-            return "";
-        nextLine = nextLine.erase(terminatorPos);
-        nextLine += " {\n\t\n}\n\n";
-        nextLine = _fileName + "::" + nextLine;
         return nextLine;
     }
-
-    if(nextLine.find("};") != string::npos)
-        _endOfFile = true;
 
     return "";
 }
 
-bool FileValidator::validate(const string& str) const {
+bool FileValidator::validate(const string& str) {
     if(str.find("public") != string::npos || str.find("protected") != string::npos || str.find("private") != string::npos) {
         Manager::Get()->GetLogManager()->Log(_("Found a p-key word!"));
         return false;
@@ -55,6 +41,7 @@ bool FileValidator::validate(const string& str) const {
 
     if(str.find("};") != string::npos) {
         Manager::Get()->GetLogManager()->Log(_("Found end of file"));
+        this->_endOfFile = true;
         return false;
     }
 
@@ -68,6 +55,10 @@ bool FileValidator::validate(const string& str) const {
         return false;
     }
 
+    if(str.find('(') == string::npos) {
+        return false;
+    }
+
     return true;
 }
 
@@ -76,7 +67,6 @@ string FileValidator::readLine() {
         return "";
     string line;
     getline(*_file, line);
-    Manager::Get()->GetLogManager()->Log(wxString(line.c_str(), wxConvUTF8));
     return line;
 }
 
@@ -98,6 +88,12 @@ void FileValidator::setInterface(const string& filename) {
     if(extension != string::npos) {
         _fileName = _fileName.erase(extension);
     }
+
+    _currentLine = findStartingLine();
+}
+
+string FileValidator::getFilename() const {
+    return _fileName;
 }
 
 bool FileValidator::endOfStream() const {

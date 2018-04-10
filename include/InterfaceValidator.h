@@ -23,7 +23,7 @@ class InterfaceValidator {
         InterfaceValidator& operator=(const InterfaceValidator&);
     protected:
         istream* _interface;
-        virtual bool validate(const string&) const = 0;
+        virtual bool validate(const string&) = 0;
 };
 
 #endif // INTERFACEVALIDATOR_H
