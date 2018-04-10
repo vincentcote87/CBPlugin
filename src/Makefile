@@ -45,5 +45,5 @@ bundle: $(PLUGIN).so ../manifest.xml
 static: ${SRC_DIR}
 	cppcheck --verbose --enable=all --xml ${SRC_DIR} ${TEST_DIR} ${INCLUDE} --suppress=missingInclude &> $(STATIC_RESULTS)
 
-docs: ${SRC_INCLUDE} BaseFrame.cpp
+docs: ${SRC_INCLUDE} 
 	doxygen Doxyfile
