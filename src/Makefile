@@ -38,7 +38,7 @@ $(PLUGIN).so: ./$(PLUGIN).cpp
 	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o -I $(SRC_INCLUDE) -c $(PLUGIN).cpp $(CB_CFLAGS) $(WX_CFLAGS)
 	$(CXX) -shared $(PLUGIN).o  -o $(PLUGIN).so $(CB_LIBS) $(WX_LIBS)
 
-bundle: $(PLUGIN).so manifest.xml
+bundle: $(PLUGIN).so ../manifest.xml
 		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).zip manifest.xml
 		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).cbplugin $(PLUGIN).so $(PLUGIN).zip
 
