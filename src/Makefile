@@ -9,7 +9,7 @@ WX_CFLAGS = `wx-config --cflags  --version=2.8`
 WX_LIBS = `wx-config --libs  --version=2.8`
 
 SRC_DIR = src
-SRC_INCLUDE = include
+SRC_INCLUDE = ../include
 SRCS = ./*.cpp
 
 TEST_DIR = test
