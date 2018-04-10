@@ -35,7 +35,7 @@ clean:
 	rm -rf $(PLUGIN).so $(PLUGIN).zip $(PLUGIN).cbplugin $(STATIC_RESULTS)
 
 $(PLUGIN).so: $(SRC_DIR)/$(PLUGIN).cpp
-	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o -c $(SRC_DIR)/$(PLUGIN).cpp $(CB_CFLAGS) $(WX_CFLAGS)
+	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o -c ./$(PLUGIN).cpp $(CB_CFLAGS) $(WX_CFLAGS)
 	$(CXX) -shared $(PLUGIN).o  -o $(PLUGIN).so $(CB_LIBS) $(WX_LIBS)
 
 bundle: $(PLUGIN).so manifest.xml
