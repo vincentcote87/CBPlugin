@@ -20,7 +20,7 @@ ZIP_FLAGS = -j
 
 STATIC_RESULTS = CppCheckResults.xml
 
-PLUGIN = $(SRC_DIR)/ImplementationGenerator
+PLUGIN = ImplementationGenerator
 PLUGIN_TEST = test_$(PLUGIN)
 
 .PHONY: all
