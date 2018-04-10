@@ -39,7 +39,7 @@ $(PLUGIN).so: ./$(PLUGIN).cpp
 	$(CXX) -shared $(PLUGIN).o  -o $(PLUGIN).so $(CB_LIBS) $(WX_LIBS)
 
 bundle: $(PLUGIN).so ../manifest.xml
-		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).zip manifest.xml
+		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).zip ../manifest.xml
 		$(ZIP) $(ZIP_FLAGS) $(PLUGIN).cbplugin $(PLUGIN).so $(PLUGIN).zip
 
 static: ${SRC_DIR}
