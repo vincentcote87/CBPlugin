@@ -19,12 +19,13 @@ class FileValidator : public InterfaceValidator {
         virtual string next() override;
         virtual void setInterface(const string&) override;
         bool endOfStream() const override;
+        string getFilename() const;
 
 
         friend bool operator==(const FileValidator&, const FileValidator&);
         FileValidator& operator=(const FileValidator&);
     protected:
-        virtual bool validate(const string&) const override;
+        virtual bool validate(const string&) override;
         virtual string readLine();
         virtual int findStartingLine();
         ifstream* _file;
