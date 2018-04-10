@@ -24,7 +24,7 @@ PLUGIN = ImplementationGenerator
 PLUGIN_TEST = test_$(PLUGIN)
 
 .PHONY: all
-all: bundle docs static
+all: bundle static
 
 # default rule for compiling .cc to .o
 %.o: %.cpp
