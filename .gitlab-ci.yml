@@ -2,7 +2,8 @@ build-plugin:
    stage: build
    script:
         - cd ./src
-        - make -C ImplementationGenerator bundle
+        - make 
+        #-C ImplementationGenerator bundle
    artifacts:
         paths:
             - ./ImplementationGenerator.cbplugin
