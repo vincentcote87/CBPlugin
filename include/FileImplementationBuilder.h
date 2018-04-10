@@ -5,23 +5,15 @@
 
 // TODO: Clean up
 #include <string>
-#include <logmanager.h>
-#include <manager.h>
-#include <editormanager.h>
-#include <wx/string.h>
-#include <wx/file.h>
-#include <editorbase.h>
-#include <cbeditor.h>
-#include <projectmanager.h>
-#include <cbproject.h>
 #include <iostream>
 #include <fstream>
-#include <wx/dynarray.h>
-#include <wx/filefn.h>
-#include <fstream>
+#include <vector>
+#include <map>
 
 using std::ofstream;
 using std::string;
+using std::vector;
+using std::map;
 
 class FileImplemenationBuilder : public ImplementationBuilder {
     public:
@@ -33,6 +25,8 @@ class FileImplemenationBuilder : public ImplementationBuilder {
     private:
         string getImplementationName(const string&) const;
         string getHeaderFileName(const string&) const;
+        vector<string> specifiersToCheck = { "virtual", "explicit"};
+        map<string, string> returnTypes = { {"int", "-1"}, {"string", "\"\""}, {"char", "\' \'"}, { "double", "0.0" }, { "float", "0.0" } };
 
 };
 
