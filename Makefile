@@ -9,7 +9,7 @@ WX_CFLAGS = `wx-config --cflags  --version=2.8`
 WX_LIBS = `wx-config --libs  --version=2.8`
 
 SRC_DIR = src
-SRC_INCLUDE = ../include
+SRC_INCLUDE = include
 SRCS = ./*.cpp
 
 TEST_DIR = test
@@ -34,8 +34,8 @@ all: bundle docs static
 clean:
 	rm -rf $(PLUGIN).so $(PLUGIN).zip $(PLUGIN).cbplugin $(STATIC_RESULTS)
 
-$(PLUGIN).so: ./$(PLUGIN).cpp
-	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o -I $(SRC_INCLUDE) -c ./$(PLUGIN).cpp $(CB_CFLAGS) $(WX_CFLAGS)
+$(PLUGIN).so: .$(SRC_DIR)/$(PLUGIN).cpp
+	$(CXX) $(CXXFLAGS) -o $(PLUGIN).o -I $(SRC_INCLUDE) -c $(SRC_DIR)/$(PLUGIN).cpp $(CB_CFLAGS) $(WX_CFLAGS)
 	$(CXX) -shared $(PLUGIN).o  -o $(PLUGIN).so $(CB_LIBS) $(WX_LIBS)
 
 bundle: $(PLUGIN).so manifest.xml
