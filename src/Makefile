@@ -10,7 +10,7 @@ WX_LIBS = `wx-config --libs  --version=2.8`
 
 SRC_DIR = src
 SRC_INCLUDE = include
-SRCS = $(SRC_DIR)/*.cpp
+SRCS = ./*.cpp
 
 TEST_DIR = test
 TEST_INCLUDE = test
